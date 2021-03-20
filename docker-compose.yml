@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    build:
+      dockerfile: ./docker/nginx.dockerfile
+      context: .
+    image: nginx
+    container_name: container-atividade3
+    ports:
+      - "80:80"
+    networks: 
+      - minha-rede
+    depends_on:
+      - "mysqldb"
+
+  mysqldb:
+    image: mysql:8.0
+    restart: always
+    networks:
+      - minha-rede
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=petclinic
+      - MYSQL_TCP_PORT=3306      
+  
+networks: 
+    minha-rede:
+        driver: bridge
