@@ -20,7 +20,7 @@ services:
       - minha-rede
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=petclinic
+      - MYSQL_DATABASE=myBD
       - MYSQL_TCP_PORT=3306      
   
 networks: 
